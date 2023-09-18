@@ -9,11 +9,12 @@ var tdPeso = paciente.querySelector(".info-peso")
 var pesoValido = true
 var peso = tdPeso.textContent
 
-//Selecionador de Altura
+// Selecionador de Altura
 var tdAltura = paciente.querySelector(".info-altura")
 var alturaValida = true
 var altura = tdAltura.textContent
 
+// Alteração no valor do IMC direto na tabela
 var tdImc = paciente.querySelector(".info-imc")
 
 if (peso <= 0 || peso >= 1000){
@@ -33,6 +34,7 @@ if (pesoValido == false && alturaValida == false){
     tdImc.textContent = "Peso e Altura Inválidos!"
 }
 
+// Calculo do IMC
 if (pesoValido && alturaValida){
     var imc = peso / (altura * altura)
     tdImc.textContent = imc
