@@ -26,17 +26,20 @@ for(var i = 0; i < pacientes.length; i++){
         console.log("Peso Inválido!")
         pesoValido = false
         tdImc.textContent = "Peso Inválido!"
+        paciente.classList.add("paciente-invalido")
     }
     
     if (altura <= 0 || altura >= 4.00){
         console.log("Altura Inválida!")
         alturaValida = false
         tdImc.textContent = "Altura Inválida"
+        paciente.classList.add("paciente-invalido")
     }
     
     if (pesoValido == false && alturaValida == false){
         console.log("Peso e Altura Inválidos!")
         tdImc.textContent = "Peso e Altura Inválidos!"
+        paciente.classList.add("paciente-invalido")
     }
     
     // Calculo do IMC
