@@ -10,6 +10,14 @@ botaoAdicionar.addEventListener("click", function(event){
    // Monta a tr com os dados, atráves de uma function
    var pacienteTr = montaTr(paciente)
 
+   var erro = validaPaciente(paciente)
+
+   if (!validaPaciente(paciente)) {
+      var mensagemErro = document.querySelector("#mensagem-erro")
+      mensagemErro.textContent = erro
+      return
+   }
+
    var tabela = document.querySelector("#tabela-pacientes")
    tabela.appendChild(pacienteTr)
 
@@ -47,4 +55,12 @@ function montaTd(dado, classe) {
    td.textContent = dado
    td.classList.add(classe)
    return td
+}
+
+function validaPaciente(paciente) {
+   if (validaPeso(paciente.peso)) {
+      return ""
+   } else {
+      return "O peso é inválido!"
+   }
 }
