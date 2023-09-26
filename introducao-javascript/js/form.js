@@ -10,11 +10,10 @@ botaoAdicionar.addEventListener("click", function(event){
    // Monta a tr com os dados, atráves de uma function
    var pacienteTr = montaTr(paciente)
 
-   var erro = validaPaciente(paciente)
-
-   if (!validaPaciente(paciente)) {
-      var mensagemErro = document.querySelector("#mensagem-erro")
-      mensagemErro.textContent = erro
+   var erros = validaPaciente(paciente)
+   
+   if (erros.length > 0) {
+      exibeMensagensdeErro(erros)
       return
    }
 
@@ -23,6 +22,16 @@ botaoAdicionar.addEventListener("click", function(event){
 
    form.reset()
 })
+
+function exibeMensagensdeErro(erros) {
+   var ul = document.querySelector("#mensagens-erro")
+
+   erros.forEach(function(erro){
+      var li = document.createElement("li")
+      li.textContent = erro
+      ul.appendChild(li)
+   })
+}
 
 function pacientedoForm(form){
    // Pegando valores do form com um objeto (passando as propriedades dos objetos)
@@ -58,9 +67,11 @@ function montaTd(dado, classe) {
 }
 
 function validaPaciente(paciente) {
-   if (validaPeso(paciente.peso)) {
-      return ""
-   } else {
-      return "O peso é inválido!"
+   var erros = []
+
+   if (!validaPeso(paciente.peso)) erros.push("O peso é inválido.") 
+
+   if (!validaAltura(paciente.altura)) {
+      erros.push("A altura é inválida.")
    }
 }
