@@ -10,8 +10,9 @@ campoFiltro.addEventListener("input", function(){
             var paciente = pacientes[i]
             var tdNome = paciente.querySelector(".info-nome")
             var nome = tdNome.textContent
-            
-            if(nome != this.value){
+            var expressao = new RegExp(this.value, "i") //Aceita duas expressões, o que ela deve buscar e depois como ela deve buscar (CaseSensiteve | CaseInsensitive)
+
+            if(!expressao.test(nome)){
                 paciente.classList.add("invisivel")
             } else {
                 paciente.classList.remove("invisivel")
