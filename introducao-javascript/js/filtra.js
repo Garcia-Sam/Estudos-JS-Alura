@@ -5,7 +5,6 @@ campoFiltro.addEventListener("input", function(){
     var pacientes = document.querySelectorAll(".paciente")
 
     if(this.value.length > 0){
-        console.log("Tem algo digitado")
         for(var i = 0; i < pacientes.length; i++){
             var paciente = pacientes[i]
             var tdNome = paciente.querySelector(".info-nome")
